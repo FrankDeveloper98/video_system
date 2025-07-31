@@ -59,4 +59,4 @@ COPY docker/production/nginx/supervisord.conf /etc/supervisor/conf.d/supervisord
 EXPOSE 8000
 
 # Start Supervisor
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+CMD ["sh", "-c", "php artisan config:cache && exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf"]
